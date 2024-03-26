@@ -38,6 +38,7 @@ function clearForm() {
 // ACTIONS
 insertTestData()
 
+// Добавление новой записи
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -109,4 +110,22 @@ form.addEventListener('submit', (e) => {
 
     clearForm()
     insertTestData()
+})
+
+// Удаление записи
+document.body.addEventListener('click', function(e) {
+    // Кнопка удалить
+    if (e.target.closest('button.item__remove')) {
+        const recordElement = e.target.closest('li.budget-list__item')
+
+        const id = +recordElement.dataset.id
+
+        const index = budget.findIndex(el => el.id === id)
+
+        // Remove from array
+        budget.splice(index, 1)
+
+        // Remove from page
+        recordElement.remove()
+    }
 })
