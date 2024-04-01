@@ -69,7 +69,7 @@ function renderRecord(record) {
     }
 }
 
-function renderBudget( totalBudget, totalIncome, totalExpense, expensePercents ) {
+function renderBudget({totalBudget, totalIncome, totalExpense, expensePercents}) {
     elements.budgetEl.innerHTML = priceFormatter.format(totalBudget)
     elements.totalIncomeEl.innerHTML = '+ ' + priceFormatter.format(totalIncome)
     elements.totalExpenseEl.innerHTML = '- ' + priceFormatter.format(totalExpense)
@@ -105,8 +105,16 @@ function getFormData() {
     }
 }
 
+function removeRecord(e) {
+    const recordElement = e.target.closest('li.budget-list__item')
+    const id = +recordElement.dataset.id
+    recordElement.remove()
+    return id
+}
+
 export {
     elements, checkEmptyFields, priceFormatter,
     renderRecord, renderBudget, clearForm,
-    renderMonth, renderTestData, getFormData
+    renderMonth, renderTestData, getFormData,
+    removeRecord
 }
