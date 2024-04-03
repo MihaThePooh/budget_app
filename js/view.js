@@ -55,7 +55,7 @@ function renderRecord(record) {
 
     // Отображаем запись Расход 
     if (record.type === 'exp') {
-        const html = `<li class="budget-list__item item item--expense" data-id="${record.id}>
+        const html = `<li class="budget-list__item item item--expense" data-id="${record.id}">
                         <div class="item__title">${record.title}</div>
                         <div class="item__right">
                         <div class="item__amount">- ${priceFormatter.format(record.value)}</div>
